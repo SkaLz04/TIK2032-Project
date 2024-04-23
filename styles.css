@@ -106,16 +106,16 @@ header ul li a:active {
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-left: 1px solid rgba(255, 255, 255, 0.5);
     padding: 40px;  
-    padding-left: 110px;
+    padding-left: 100px;
 }
 .content h2 {
     padding-bottom : 10px;
     font-size: 3em;
     color: #1f71a1;
 }
-.content p {
-    font-size: 1.2em;
-    color:#1f71a1;
+    .content p {
+        font-size: 1.2em;
+        color:#1f71a1;
 }
 .content a {
     display: inline-block;
@@ -182,6 +182,10 @@ header ul li a:active {
         position: relative;
         width: calc(100% - 20px);
     }
+    .content {
+        transform: translateX(0px);
+        padding-left:40px;
+    }
 } 
 @media screen and (max-width: 992px) {
     section {
@@ -194,17 +198,17 @@ header ul li a:active {
 
     }
     .containter .content {
-        transform: translateX(0px);
         max-width: 100%;
-        margin-top: -20px;
+        margin-top: 20px;
         padding: 30px;
+        transform: translateX(0px);
     }
     header {
         position: relative;
         flex-direction: column; 
         width: 100%;
         top: -40px;
-        padding: 20px;  
+        padding: -2px;  
         right: 0;
         left: 0;
     }   
@@ -223,6 +227,7 @@ header ul li a:active {
 
     .imgbox {
         margin-bottom: 50px;
+        
 }
     .content a {
         font-size: 1em;
@@ -250,6 +255,7 @@ header ul li a:active {
 @media screen and (max-width: 600px) {
     .container .content {
         margin-top: -30px;
+         ;
     }
     .content h2 {
         font-size: 2em;
@@ -263,24 +269,27 @@ header ul li a:active {
     .icon li a {
         width: 35px;
     }
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
 }   
 
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
 }
 
 .news-item {
-    background-color: #fff;
-    border: 1px solid #d2d2d2;
-    border-radius: 10px;
+    background-color: #f0f0f0;
     padding: 20px;
-    text-align: center;
+    border-radius: 8px;
+    margin-right : 50px
 }
 
 .news-item img {
-    max-width: 300px;
+    max-width: 160px;
     height: auto;
 }
 
@@ -289,9 +298,13 @@ header ul li a:active {
     margin: 10px 0;
 }
 
-.news-item p {
+.news-item p{
     font-size: 14px;
     color: #333;
+}
+.news-item a {  
+    font-size:1em;
+    margin-left : -10px
 }
 
 div.gallery {
@@ -322,10 +335,22 @@ div.gallery {
     width: 24.99999%;
   }
   
+  .contact{
+    position:relative  ;
+    display: block;
+    text-align: left;
+    right: 35%;
+    top: 18%;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
   @media only screen and (max-width: 700px) {
     .responsive {
       width: 49.99999%;
       margin: 6px 0;
+    }
+    .contact{
+        position: static;
     }
   }
   
@@ -342,12 +367,147 @@ div.gallery {
   }
 
 
-  .contact{
-    position:relative   ;
+
+
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.name-animation {
+    display: inline-block;
+    position: relative;
+    animation: fadeInLeft 0.5s ease-in-out forwards;
+}
+
+.name-animation::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 1) 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    animation: brushStroke 0.5s ease-in-out forwards;
+}
+
+@keyframes brushStroke {
+    0% {
+        background-position: right bottom;
+    }
+    100% {
+        background-position: left bottom;
+    }
+}
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.content h2, p, a{
+    animation: fadeInLeft 1s ease-in-out forwards;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+/* Efek hover */
+.gallery img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* Style untuk modal */
+.modal {
+    display: none; /* Sembunyikan modal secara default */
+    position: fixed;
+    z-index: 1;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+/* Konten dalam modal */
+.modal-content {
+    margin: auto;
     display: block;
-    text-align: left;
-    right: 35%;
-    top: 18%;
-    margin-bottom: 10px;
-    margin-top: 30px;
+    width: 80%;
+    max-width: 700px;
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+}
+
+.contact {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.skills {
+    text-align: center;
+}
+
+.skills-heading {
+    margin-bottom: 30px;
+}
+
+.skill {
+    margin-bottom: 20px;
+}
+
+.progress {
+    width: 100px; /* Lebar bar kemampuan */
+    height: 200px; /* Tinggi bar kemampuan */
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden; /* Menyembunyikan overflow agar animasi tidak terlihat di luar batas bar */
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0; /* Tinggi awal bar */
+    border-radius: 5px;
+    background-color: #1f71a1; /* Warna dasar */
+    animation-fill-mode: forwards; /* Biarkan properti akhir setelah animasi selesai */
+}
+
+.progress-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Keyframes untuk animasi pengisian bar */
+@keyframes fillProgress {
+    from { height: 0; }
+    to { height: calc(var(--percent) * 2px); } /* Menggunakan CSS variable untuk menghitung tinggi bar */
 }
