@@ -10,33 +10,53 @@
     <section>
     <div class="container">
     <header>
-        <a class="logo">My Portofolio</a>
+        <a class="logo">My Portfolio</a>
         <ul>
             <li><a href="index.html" >Home</a></li>
-            <li><a href="gallery.html"class="active">Gallery</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
             <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
     </header>
     <div class="content">
-        <h2> Contact Me !</h2>
+        <h2>Contact Me!</h2>
     </div>
-        <div class="contact">
-        <h1>Biodata :</h1>
+    <div class="contact">
+        <h1>Biodata:</h1>
         <br>Nama : Paskal Victor Punusingon <br> NIM : 22021106274 </br>TTL : Tosuraya, 12 April 2004</span>
         <h2>Email:</h2>
-        <p><a href="paskalpunusingon026@student.unsrat.ac.id">paskalpunusingon026@student.unsrat.ac.id</a></p>
+        <p><a href="mailto:paskalpunusingon026@student.unsrat.ac.id">paskalpunusingon026@student.unsrat.ac.id</a></p>
         <h2>Phone:</h2>
         <p>+62 857 - 5732 - 2267</p>
         <h2>Instagram:</h2>
         <p><a href="https://www.instagram.com/paskalpunusingon_/">@paskalpunusingon_</a></p>
     </div>
+</section>
+    <section>   
+        <div class="container">
+            <div class="contact-form">
+        <h2>Send Me a Message:</h2>
+        <form method="post" action="send_message.php">
+            <label for="nama">Nama:</label><br>
+            <input type="text" id="nama" name="nama"><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            
+            <label for="pesan">Pesan:</label><br>
+            <textarea id="pesan" name="pesan"></textarea><br>
+            
+            <input type="submit" value="Kirim Pesan">
+        </form>
+        
+    </div>
+</section>
+
     <ul class="icon">
         <li><a href="https://www.instagram.com/paskalpunusingon_"><img src="img/icon/instagram.webp"></a></li>
         <li><a href="https://www.facebook.com/paskal.punusingon.1"><img src="img/icon/facebook.png"></a></li>
         <li><a href="https://www.tiktok.com/@paskalpunusingon"><img src="img/icon/tiktok.png"></a></li>
     </ul>
-    </section>
     <script src="script.js"></script>
 </body>
 </html>
